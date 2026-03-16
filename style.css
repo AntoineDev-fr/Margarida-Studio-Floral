@@ -1,6 +1,6 @@
 /* ============================================================
    MARGARIDA STUDIO FLORAL — style.css
-   Palette : Orange #E8914A · Rose #F2C4CE · Crème #FAF7F4 · Texte #2D2D2D
+   Palette : Orange #E8914A · Lilas #D4A0E8 · Crème #FAF7F4 · Texte #2D2D2D
    Fonts   : Playfair Display (titres) · Lato (corps)
 ============================================================ */
 
@@ -9,8 +9,8 @@
   --orange:        #E8914A;
   --orange-dk:     #D4793A;
   --orange-lt:     #F5D3B8;
-  --rose:          #F2C4CE;
-  --rose-dk:       #E0A3B0;
+  --rose:          #D4A0E8;
+  --rose-dk:       #B87ED4;
   --creme:         #FAF7F4;
   --creme-dk:      #F0EAE3;
   --text:          #2D2D2D;
@@ -71,8 +71,8 @@ address { font-style: normal; }
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--creme-dk); }
-::-webkit-scrollbar-thumb { background: var(--orange-lt); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rose-dk); }
 
 
 /* ===== LAYOUT ===== */
@@ -131,6 +131,7 @@ p {
 .section-title {
   margin-bottom: 1rem;
 }
+.section-title em { color: var(--rose-dk); }
 
 .section-subtitle {
   font-size: 1.05rem;
@@ -172,8 +173,8 @@ p {
 }
 .btn-ghost:hover, .btn-ghost:focus-visible {
   background: rgba(255,255,255,0.3);
-  border-color: var(--orange);
-  color: var(--orange-dk);
+  border-color: var(--rose);
+  color: var(--rose-dk);
   transform: translateY(-2px);
 }
 
@@ -289,6 +290,7 @@ p {
   width: 38px;
   height: 38px;
   flex-shrink: 0;
+  object-fit: contain;
   transition: transform var(--transition);
 }
 .nav-logo:hover .nav-logo-icon { transform: rotate(12deg) scale(1.05); }
@@ -451,8 +453,8 @@ p {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--orange);
-  background: rgba(232, 145, 74, 0.1);
+  color: var(--rose-dk);
+  background: rgba(212, 160, 232, 0.15);
   padding: 7px 18px;
   border-radius: var(--radius-xl);
   margin-bottom: 1.5rem;
@@ -466,7 +468,7 @@ p {
   margin-bottom: 1.2rem;
   line-height: 1.1;
 }
-.hero-title em { color: var(--orange); }
+.hero-title em { color: var(--rose-dk); }
 
 .hero-subtitle {
   font-size: clamp(1rem, 2.2vw, 1.25rem);
@@ -598,7 +600,7 @@ p {
   font-family: var(--font-h);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--orange);
+  color: var(--rose-dk);
   line-height: 1;
 }
 
@@ -1110,7 +1112,7 @@ p {
   align-items: center;
   gap: 12px;
 }
-.footer-logo-icon { width: 44px; height: 44px; flex-shrink: 0; }
+.footer-logo-icon { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
 .footer-logo-text {
   font-family: var(--font-h);
   font-size: 1.05rem;
