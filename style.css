@@ -21,6 +21,7 @@
 
   --font-h:        'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-b:        'Lato', system-ui, -apple-system, sans-serif;
+  --font-accent:   'Germania One', var(--font-h);
 
   --radius-sm:     8px;
   --radius:        14px;
@@ -143,7 +144,10 @@ p {
 .section-title {
   margin-bottom: 1rem;
 }
-.section-title em { color: var(--rose-dk); }
+.section-title em {
+  color: var(--rose-dk);
+  font-family: var(--font-accent);
+}
 
 .section-subtitle {
   font-size: 1.05rem;
@@ -495,7 +499,10 @@ p {
   margin-bottom: 1.2rem;
   line-height: 1.1;
 }
-.hero-title em { color: var(--rose-dk); }
+.hero-title em {
+  color: var(--rose-dk);
+  font-family: var(--font-accent);
+}
 
 .hero-subtitle {
   max-width: 680px;
@@ -1509,7 +1516,10 @@ p {
   margin-bottom: 0.6rem;
 }
 
-.legal-header h1 em { color: var(--rose-dk); }
+.legal-header h1 em {
+  color: var(--rose-dk);
+  font-family: var(--font-accent);
+}
 
 .legal-header p {
   font-size: 0.95rem;
