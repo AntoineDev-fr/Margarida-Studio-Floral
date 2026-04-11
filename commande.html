@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commande WhatsApp – Margarida Studio Floral</title>
+  <meta name="description" content="Préparez votre commande florale en click and collect ou en livraison puis ouvrez-la directement dans WhatsApp.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="author" content="Margarida Studio Floral">
+
+  <link rel="icon" type="image/png" href="assets/macaronlogo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="order-page">
+
+  <div class="delivery-popup" id="deliveryPopup" role="dialog" aria-modal="true" aria-labelledby="deliveryPopupTitle" aria-describedby="deliveryPopupDesc" hidden>
+    <div class="delivery-popup__backdrop" data-popup-close="true"></div>
+    <div class="delivery-popup__dialog">
+      <button type="button" class="delivery-popup__close" id="deliveryPopupClose" aria-label="Fermer la fenêtre des tarifs de livraison">×</button>
+
+      <div class="delivery-popup__tag">Information livraison</div>
+      <h2 class="delivery-popup__title" id="deliveryPopupTitle">Tarifs de livraison par secteur</h2>
+      <p class="delivery-popup__desc" id="deliveryPopupDesc">Tarifs provisoires à confirmer. Vous pourrez les ajuster plus tard avec les montants exacts.</p>
+
+      <div class="delivery-popup__grid" role="list" aria-label="Tarifs de livraison">
+        <div class="delivery-popup__item" role="listitem">
+          <strong>Rouen centre</strong>
+          <span>8 €</span>
+        </div>
+        <div class="delivery-popup__item" role="listitem">
+          <strong>Rouen rive gauche</strong>
+          <span>10 €</span>
+        </div>
+        <div class="delivery-popup__item" role="listitem">
+          <strong>Mont-Saint-Aignan</strong>
+          <span>12 €</span>
+        </div>
+        <div class="delivery-popup__item" role="listitem">
+          <strong>Bois-Guillaume / Bihorel</strong>
+          <span>12 €</span>
+        </div>
+        <div class="delivery-popup__item" role="listitem">
+          <strong>Sotteville-lès-Rouen / Petit-Quevilly</strong>
+          <span>12 €</span>
+        </div>
+        <div class="delivery-popup__item" role="listitem">
+          <strong>Bonsecours / Grand-Quevilly / Déville</strong>
+          <span>15 €</span>
+        </div>
+      </div>
+
+      <p class="delivery-popup__note">Autres communes autour de Rouen : sur devis selon distance.</p>
+
+      <button type="button" class="btn btn-whatsapp delivery-popup__action" id="deliveryPopupAction">J'ai compris</button>
+    </div>
+  </div>
+
+  <main class="order-page-shell">
+    <a href="index.html" class="order-page-back" aria-label="Retour au site vitrine">← Retour</a>
+
+    <section class="order section order-page-section" id="commande" aria-label="Préparer une commande">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-tag">Commande WhatsApp</div>
+          <h1 class="section-title">Préparer ma <em>commande</em></h1>
+          <p class="section-subtitle">Choisissez votre mode de retrait, renseignez les informations utiles et ouvrez votre commande directement dans WhatsApp.</p>
+        </div>
+
+        <div class="order-grid">
+
+          <div class="order-info slide-left">
+            <div class="order-info-card">
+              <h3>Comment ça marche ?</h3>
+              <ul class="order-steps" role="list">
+                <li>Choisissez entre click and collect et livraison.</li>
+                <li>Indiquez la date et l'heure souhaitées.</li>
+                <li>Ajoutez les infos du destinataire si c'est un cadeau.</li>
+                <li>Validez pour ouvrir votre demande dans WhatsApp.</li>
+              </ul>
+
+              <div class="order-note">
+                <strong>Livraison</strong>
+                <p>Une livraison doit être demandée avec au moins 2 heures d'écart entre maintenant et l'heure choisie.</p>
+              </div>
+
+              <div class="order-note">
+                <strong>Retrait boutique</strong>
+                <p>Click and collect au studio floral, 10 rue de la Croix de Fer, 76000 Rouen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-form-wrap slide-right">
+            <form class="contact-form order-form" id="orderForm" novalidate aria-label="Formulaire de commande WhatsApp">
+              <fieldset class="order-mode">
+                <legend>Mode de commande <span class="required" aria-label="champ obligatoire">*</span></legend>
+                <div class="order-mode-grid">
+                  <label class="order-mode-option">
+                    <input type="radio" name="fulfillment" value="collect" checked>
+                    <span class="order-mode-copy">
+                      <strong>Click and collect</strong>
+                      <small>Retrait en boutique</small>
+                    </span>
+                  </label>
+
+                  <label class="order-mode-option">
+                    <input type="radio" name="fulfillment" value="delivery">
+                    <span class="order-mode-copy">
+                      <strong>Livraison</strong>
+                      <small>Adresse obligatoire</small>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="form-group">
+                <label for="orderDetails">Commande souhaitée <span class="required" aria-label="champ obligatoire">*</span></label>
+                <textarea id="orderDetails" name="orderDetails" rows="4" placeholder="Bouquet vitrine, composition sur mesure, couleurs souhaitées, budget, message à joindre..." required aria-required="true" aria-describedby="orderDetailsError"></textarea>
+                <span class="form-error" id="orderDetailsError" role="alert" aria-live="polite">Veuillez préciser votre commande</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="orderFirstname">Prénom <span class="required" aria-label="champ obligatoire">*</span></label>
+                  <input type="text" id="orderFirstname" name="orderFirstname" placeholder="Marie" autocomplete="given-name" required aria-required="true" aria-describedby="orderFirstnameError">
+                  <span class="form-error" id="orderFirstnameError" role="alert" aria-live="polite">Veuillez entrer le prénom du client</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="orderLastname">Nom <span class="required" aria-label="champ obligatoire">*</span></label>
+                  <input type="text" id="orderLastname" name="orderLastname" placeholder="Dupont" autocomplete="family-name" required aria-required="true" aria-describedby="orderLastnameError">
+                  <span class="form-error" id="orderLastnameError" role="alert" aria-live="polite">Veuillez entrer le nom du client</span>
+                </div>
+              </div>
+
+              <div class="form-group order-conditional" id="deliveryAddressGroup" hidden>
+                <label for="deliveryAddress">Adresse de livraison <span class="required" aria-label="champ obligatoire">*</span></label>
+                <textarea id="deliveryAddress" name="deliveryAddress" rows="3" placeholder="Numéro, rue, complément, code postal, ville" aria-describedby="deliveryAddressError"></textarea>
+                <span class="form-error" id="deliveryAddressError" role="alert" aria-live="polite">Veuillez entrer l'adresse de livraison</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="orderDate">Date souhaitée <span class="required" aria-label="champ obligatoire">*</span></label>
+                  <input type="date" id="orderDate" name="orderDate" required aria-required="true" aria-describedby="orderDateError">
+                  <span class="form-error" id="orderDateError" role="alert" aria-live="polite">Veuillez choisir une date</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="orderTime">Heure souhaitée <span class="required" aria-label="champ obligatoire">*</span></label>
+                  <input type="time" id="orderTime" name="orderTime" required aria-required="true" aria-describedby="orderTimeError">
+                  <span class="form-error" id="orderTimeError" role="alert" aria-live="polite">Veuillez choisir une heure</span>
+                </div>
+              </div>
+
+              <label class="order-gift-toggle" for="isGift">
+                <input type="checkbox" id="isGift" name="isGift">
+                <span>C'est pour offrir</span>
+              </label>
+
+              <div class="order-conditional order-recipient" id="recipientFields" hidden>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="recipientFirstname">Prénom du destinataire <span class="required" aria-label="champ obligatoire">*</span></label>
+                    <input type="text" id="recipientFirstname" name="recipientFirstname" placeholder="Camille" aria-describedby="recipientFirstnameError">
+                    <span class="form-error" id="recipientFirstnameError" role="alert" aria-live="polite">Veuillez entrer le prénom du destinataire</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="recipientLastname">Nom du destinataire <span class="required" aria-label="champ obligatoire">*</span></label>
+                    <input type="text" id="recipientLastname" name="recipientLastname" placeholder="Martin" aria-describedby="recipientLastnameError">
+                    <span class="form-error" id="recipientLastnameError" role="alert" aria-live="polite">Veuillez entrer le nom du destinataire</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="recipientPhone">Téléphone du destinataire <span class="required" aria-label="champ obligatoire">*</span></label>
+                  <input type="tel" id="recipientPhone" name="recipientPhone" placeholder="06 12 34 56 78" autocomplete="tel" aria-describedby="recipientPhoneError">
+                  <span class="form-error" id="recipientPhoneError" role="alert" aria-live="polite">Veuillez entrer un numéro valide pour le destinataire</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-whatsapp btn-full" id="orderSubmitBtn">
+                <span class="btn-text">Continuer sur WhatsApp</span>
+              </button>
+
+              <div class="form-success" id="orderSuccess" hidden role="alert" aria-live="polite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M8.5 12.5l2.5 2.5 4.5-5"/>
+                </svg>
+                <p>WhatsApp s'est ouvert avec votre commande. Vérifiez l'application ou WhatsApp Web si rien ne s'affiche.</p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
