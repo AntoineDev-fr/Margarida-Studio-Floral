@@ -1813,6 +1813,10 @@ body.modal-open {
     --section-y: 64px;
   }
 
+  .section {
+    overflow-x: clip;
+  }
+
   /* Nav mobile */
   .hamburger { display: flex; }
 
