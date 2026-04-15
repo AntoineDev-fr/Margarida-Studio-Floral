@@ -417,9 +417,13 @@ p {
   backdrop-filter: blur(3px);
   z-index: 900;
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition);
 }
-.nav-overlay.active { opacity: 1; }
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 
 /* ============================================================
