@@ -1990,6 +1990,11 @@ body.modal-open {
     margin: 0 auto;
   }
 
+  .delivery-popup__grid {
+    width: 100%;
+    max-width: none;
+  }
+
   .about-stats { gap: 24px; }
   .stat-number { font-size: 1.6rem; }
 
