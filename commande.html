@@ -84,37 +84,45 @@
       <button type="button" class="delivery-popup__close" id="deliveryPopupClose" aria-label="Fermer la fenêtre des tarifs de livraison">×</button>
 
       <div class="delivery-popup__tag">Information livraison</div>
-      <h2 class="delivery-popup__title" id="deliveryPopupTitle">Tarifs de livraison par secteur</h2>
-      <p class="delivery-popup__desc" id="deliveryPopupDesc">Tarifs provisoires à confirmer. Vous pourrez les ajuster plus tard avec les montants exacts.</p>
+      <h2 class="delivery-popup__title" id="deliveryPopupTitle">Grille tarifaire livraison</h2>
+      <p class="delivery-popup__desc" id="deliveryPopupDesc">Tarifs de livraisons depuis ou vers votre boutique avec leurs zones.</p>
 
-      <div class="delivery-popup__grid" role="list" aria-label="Tarifs de livraison">
-        <div class="delivery-popup__item" role="listitem">
-          <strong>Rouen centre</strong>
-          <span>8 €</span>
-        </div>
-        <div class="delivery-popup__item" role="listitem">
-          <strong>Rouen rive gauche</strong>
-          <span>10 €</span>
-        </div>
-        <div class="delivery-popup__item" role="listitem">
-          <strong>Mont-Saint-Aignan</strong>
-          <span>12 €</span>
-        </div>
-        <div class="delivery-popup__item" role="listitem">
-          <strong>Bois-Guillaume / Bihorel</strong>
-          <span>12 €</span>
-        </div>
-        <div class="delivery-popup__item" role="listitem">
-          <strong>Sotteville-lès-Rouen / Petit-Quevilly</strong>
-          <span>12 €</span>
-        </div>
-        <div class="delivery-popup__item" role="listitem">
-          <strong>Bonsecours / Grand-Quevilly / Déville</strong>
-          <span>15 €</span>
+      <div class="delivery-popup__body">
+        <img class="delivery-popup__map" src="assets/zone-livraison-rouen.png" alt="Carte des zones de livraison autour de Rouen" loading="lazy">
+
+        <div class="delivery-popup__grid" role="list" aria-label="Tarifs de livraison">
+          <div class="delivery-popup__item delivery-popup__item--z1" role="listitem">
+            <strong>Zone 1</strong>
+            <span>7,50 € HT</span>
+          </div>
+          <div class="delivery-popup__item delivery-popup__item--z2" role="listitem">
+            <strong>Zone 2</strong>
+            <span>8,50 € HT</span>
+          </div>
+          <div class="delivery-popup__item delivery-popup__item--z3" role="listitem">
+            <strong>Zone 3</strong>
+            <span>10,00 € HT</span>
+          </div>
+          <div class="delivery-popup__item delivery-popup__item--z4" role="listitem">
+            <strong>Zone 4</strong>
+            <span>14,00 € HT</span>
+          </div>
+          <div class="delivery-popup__item delivery-popup__item--z5" role="listitem">
+            <strong>Zone 5</strong>
+            <span>18,00 € HT</span>
+          </div>
         </div>
       </div>
 
-      <p class="delivery-popup__note">Autres communes autour de Rouen : sur devis selon distance.</p>
+      <p class="delivery-popup__note delivery-popup__note--highlight">Livraison de proximité : entre 0 € et 5 € selon l'adresse, si elle est vraiment à proximité immédiate de la boutique.</p>
+
+      <div class="delivery-popup__extra">
+        <h3 class="delivery-popup__extra-title">Informations complémentaires</h3>
+        <ul class="delivery-popup__extra-list">
+          <li>Livraison express (moins d'une heure avant le début du créneau) : <strong>+8 € HT</strong></li>
+          <li>Retrait au M.I.N (Marché d'Intérêt National) : tarif Zone 5</li>
+        </ul>
+      </div>
 
       <button type="button" class="btn btn-whatsapp delivery-popup__action" id="deliveryPopupAction">J'ai compris</button>
     </div>

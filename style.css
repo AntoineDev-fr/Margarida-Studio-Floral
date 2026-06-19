@@ -1053,10 +1053,31 @@ body.modal-open {
   line-height: 1.7;
 }
 
+.delivery-popup__body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.delivery-popup__map {
+  display: block;
+  width: 280px;
+  height: auto;
+  max-width: 48%;
+  flex-shrink: 0;
+  border-radius: 18px;
+  border: 1px solid rgba(45, 45, 45, 0.08);
+}
+
 .delivery-popup__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  flex: 1;
+  max-width: 280px;
+  min-width: 0;
+  gap: 10px;
 }
 
 .delivery-popup__item {
@@ -1067,8 +1088,15 @@ body.modal-open {
   padding: 16px 18px;
   border-radius: 20px;
   border: 1px solid rgba(45, 45, 45, 0.08);
+  border-left: 6px solid transparent;
   background: rgba(255,255,255,0.78);
 }
+
+.delivery-popup__item--z1 { border-left-color: #4f81bd; }
+.delivery-popup__item--z2 { border-left-color: #4fb8a0; }
+.delivery-popup__item--z3 { border-left-color: #eaa64a; }
+.delivery-popup__item--z4 { border-left-color: #de7c33; }
+.delivery-popup__item--z5 { border-left-color: #c1374f; }
 
 .delivery-popup__item strong {
   font-size: 0.98rem;
@@ -1091,6 +1119,40 @@ body.modal-open {
   margin: 18px 0 0;
   color: var(--text-md);
   line-height: 1.65;
+}
+
+.delivery-popup__note--highlight {
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(232, 145, 74, 0.12);
+  color: var(--text);
+}
+
+.delivery-popup__extra {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(45, 45, 45, 0.08);
+}
+
+.delivery-popup__extra-title {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-md);
+}
+
+.delivery-popup__extra-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-md);
+  line-height: 1.6;
 }
 
 .delivery-popup__action {
@@ -1918,8 +1980,14 @@ body.modal-open {
     border-radius: 24px;
   }
 
-  .delivery-popup__grid {
-    grid-template-columns: 1fr;
+  .delivery-popup__body {
+    flex-direction: column;
+  }
+
+  .delivery-popup__map {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
   }
 
   .about-stats { gap: 24px; }

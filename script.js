@@ -244,7 +244,7 @@ if (navItems.length) {
 
 const form       = $('#contactForm');
 const successMsg = $('#formSuccess');
-const WHATSAPP_NUMBER = '33646446934';
+const WHATSAPP_NUMBER = '33612450560';
 
 if (form) {
   const fields = {
