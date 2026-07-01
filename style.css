@@ -1819,6 +1819,13 @@ body.modal-open {
 }
 .footer-legal a:hover { color: rgba(250, 247, 244, 0.75); }
 
+.footer-dev-link {
+  color: rgba(250, 247, 244, 0.4);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-dev-link:hover { color: rgba(250, 247, 244, 0.75); }
+
 
 /* ============================================================
    RESPONSIVE — TABLET (max 1024px)
