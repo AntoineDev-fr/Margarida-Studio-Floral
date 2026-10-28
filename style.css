@@ -1201,6 +1201,8 @@ body.modal-open {
 }
 .service-card--featured:hover { border-color: rgba(184, 126, 212, 0.45); }
 
+.service-card--deuil { grid-column: 5 / span 4; }
+
 .service-badge {
   position: absolute;
   top: 18px;
@@ -1858,6 +1860,7 @@ body.modal-open {
   }
   .service-card { grid-column: span 1; }
   .service-card--featured { grid-column: 1 / -1; }
+  .service-card--deuil { grid-column: 1 / -1; justify-self: center; width: calc(50% - 12px); }
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2018,6 +2021,7 @@ body.modal-open {
   }
   .service-card h3 { padding-top: 22px; }
   .service-card > .service-link { padding-bottom: 24px; }
+  .service-card--deuil { grid-column: span 1; justify-self: stretch; width: auto; }
 
   /* Gallery */
   .gallery-grid {
