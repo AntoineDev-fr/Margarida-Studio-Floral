@@ -1201,8 +1201,6 @@ body.modal-open {
 }
 .service-card--featured:hover { border-color: rgba(184, 126, 212, 0.45); }
 
-.service-card--deuil { grid-column: 5 / span 4; }
-
 .service-badge {
   position: absolute;
   top: 18px;
@@ -1860,7 +1858,6 @@ body.modal-open {
   }
   .service-card { grid-column: span 1; }
   .service-card--featured { grid-column: 1 / -1; }
-  .service-card--deuil { grid-column: 1 / -1; justify-self: center; width: calc(50% - 12px); }
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2021,7 +2018,6 @@ body.modal-open {
   }
   .service-card h3 { padding-top: 22px; }
   .service-card > .service-link { padding-bottom: 24px; }
-  .service-card--deuil { grid-column: span 1; justify-self: stretch; width: auto; }
 
   /* Gallery */
   .gallery-grid {
@@ -2187,4 +2183,87 @@ body.modal-open {
   font-size: 0.88em;
   font-style: italic;
   border: 1px dashed var(--orange-lt);
+}
+
+
+/* ============================================================
+   PRESTATIONS — GRILLE EN QUINCONCE + BOUTON "VOIR PLUS"
+============================================================ */
+
+/* Ordi + tablette : grande / petite, puis petite / grande, etc. */
+@media (min-width: 769px) {
+  .services-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .services-grid > .service-card:nth-child(4n + 1),
+  .services-grid > .service-card:nth-child(4n) {
+    grid-column: span 8;
+  }
+  .services-grid > .service-card:nth-child(4n + 2),
+  .services-grid > .service-card:nth-child(4n + 3) {
+    grid-column: span 4;
+  }
+  .services-grid > .service-card:nth-child(4n + 1) .service-media,
+  .services-grid > .service-card:nth-child(4n) .service-media {
+    aspect-ratio: 16 / 9;
+  }
+  /* Petites cartes : la photo s'étire pour remplir la hauteur (pas de vide blanc) */
+  .services-grid > .service-card:nth-child(4n + 2) .service-media,
+  .services-grid > .service-card:nth-child(4n + 3) .service-media {
+    flex: 1 0 auto;
+  }
+  .services-grid > .service-card:nth-child(4n + 2) > p,
+  .services-grid > .service-card:nth-child(4n + 3) > p {
+    flex: 0 0 auto;
+  }
+  /* 4 cartes visibles avant "Voir plus" */
+  .services-grid:not(.is-expanded) > .service-card:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+/* Tablette : proportions un peu plus douces */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .services-grid > .service-card:nth-child(4n + 1),
+  .services-grid > .service-card:nth-child(4n) {
+    grid-column: span 7;
+  }
+  .services-grid > .service-card:nth-child(4n + 2),
+  .services-grid > .service-card:nth-child(4n + 3) {
+    grid-column: span 5;
+  }
+}
+
+/* Téléphone : 3 cartes visibles avant "Voir plus" */
+@media (max-width: 768px) {
+  .services-grid:not(.is-expanded) > .service-card:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+.services-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+.services-more[hidden] { display: none; }
+
+.services-more-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition);
+}
+.services-more-btn[aria-expanded="true"] .services-more-icon {
+  transform: rotate(180deg);
+}
+
+/* Apparition des cartes après "Voir plus" */
+.service-card.is-revealing {
+  animation: serviceReveal 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+@keyframes serviceReveal {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }

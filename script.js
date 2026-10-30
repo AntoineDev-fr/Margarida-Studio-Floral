@@ -736,3 +736,56 @@ if (footerLogo) {
     window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   });
 }
+
+
+/* ============================================================
+   PRESTATIONS — bouton "Voir plus"
+============================================================ */
+
+const servicesGrid = $('#servicesGrid');
+const servicesMore = $('.services-more');
+const servicesMoreBtn = $('.services-more-btn');
+
+if (servicesGrid && servicesMore && servicesMoreBtn) {
+  const servicesMoreLabel = $('.services-more-label', servicesMoreBtn);
+  const serviceCards = $$('.service-card', servicesGrid);
+  const isCardHidden = card => getComputedStyle(card).display === 'none';
+
+  // Cache le bouton s'il n'y a rien de plus à afficher pour cette taille d'écran
+  const updateServicesMore = () => {
+    if (servicesGrid.classList.contains('is-expanded')) return;
+    servicesMore.hidden = !serviceCards.some(isCardHidden);
+  };
+
+  servicesMoreBtn.addEventListener('click', () => {
+    if (!servicesGrid.classList.contains('is-expanded')) {
+      const toReveal = serviceCards.filter(isCardHidden);
+      servicesGrid.classList.add('is-expanded');
+
+      toReveal.forEach((card, i) => {
+        card.classList.add('visible');
+        if (prefersReducedMotion()) return;
+        card.style.setProperty('--reveal-delay', `${i * 0.12}s`);
+        card.classList.add('is-revealing');
+        card.addEventListener('animationend', () => {
+          card.classList.remove('is-revealing');
+        }, { once: true });
+      });
+
+      servicesMoreLabel.textContent = 'Voir moins';
+      servicesMoreBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      // Garde le bouton au même endroit à l'écran quand on replie
+      const before = servicesMoreBtn.getBoundingClientRect().top;
+      servicesGrid.classList.remove('is-expanded');
+      const after = servicesMoreBtn.getBoundingClientRect().top;
+      window.scrollBy({ top: after - before, behavior: 'instant' });
+
+      servicesMoreLabel.textContent = 'Voir plus de prestations';
+      servicesMoreBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  updateServicesMore();
+  window.addEventListener('resize', updateServicesMore);
+}
